@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block toolbar %}
+<form method="post" enctype="multipart/form-data" class="toolbar-form">
+  <div class="toolbar-field">
+    <label for="markdown_file">Upload</label>
+    <input id="markdown_file" type="file" name="markdown_file" accept=".md,text/markdown" />
+  </div>
+
+  <span class="toolbar-sep">or</span>
+
+  <div class="toolbar-field toolbar-field--grow">
+    <label for="markdown_path">Path</label>
+    <input
+      id="markdown_path"
+      type="text"
+      name="markdown_path"
+      placeholder="/home/user/docs/notes.md"
+    />
+  </div>
+
+  <button type="submit" class="primary-btn">Render</button>
+
+  {% if error %}<span class="message error">{{ error }}</span>{% endif %}
+  {% if source_name %}<span class="message success">{{ source_name }}</span>{% endif %}
+</form>
+{% endblock %}
+
+{% block content %}
+<section class="viewer-panel">
+  <article class="markdown-body">
+    {% if rendered_html %}
+    {{ rendered_html | safe }}
+    {% else %}
+    <h2>Viewer Ready</h2>
+    <p>Upload a file or enter a path above, then click <strong>Render</strong>.</p>
+    {% endif %}
+  </article>
+</section>
+{% endblock %}

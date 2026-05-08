@@ -1,0 +1,259 @@
+:root {
+  --bg: #f5f2ea;
+  --surface: #fffefb;
+  --surface-strong: #f0ebdf;
+  --text: #1d1d1b;
+  --muted: #656565;
+  --accent: #0a7c6a;
+  --accent-2: #0b5d50;
+  --border: #d4cec0;
+  --code-bg: #f2eee4;
+  --error: #9e1f30;
+  --success: #1f7a39;
+  --shadow: rgba(26, 23, 16, 0.12);
+}
+
+:root[data-theme="dark"] {
+  --bg: #1d2125;
+  --surface: #272d32;
+  --surface-strong: #1f2428;
+  --text: #f0ece3;
+  --muted: #b6b0a4;
+  --accent: #49c1aa;
+  --accent-2: #2e9d8a;
+  --border: #3d454d;
+  --code-bg: #1a1f23;
+  --error: #ff6b81;
+  --success: #7edb99;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 8% 10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 26%),
+    radial-gradient(circle at 85% 0%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent 30%),
+    linear-gradient(165deg, var(--bg), color-mix(in srgb, var(--bg) 84%, #000 16%));
+  font-family: "Lora", "Georgia", serif;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  letter-spacing: 0.02em;
+}
+
+.brand p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+}
+
+.theme-toggle,
+.primary-btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.62rem 1rem;
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.primary-btn:hover {
+  background: var(--accent-2);
+}
+
+.toolbar {
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(8px);
+  padding: 0.6rem 1.4rem;
+  position: sticky;
+  top: 57px;
+  z-index: 9;
+}
+
+.toolbar-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  width: min(1160px, 94vw);
+  margin: 0 auto;
+}
+
+.toolbar-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbar-field--grow {
+  flex: 1;
+  min-width: 180px;
+}
+
+.toolbar-field--grow input[type="text"] {
+  width: 100%;
+}
+
+.toolbar-field label {
+  font-weight: 700;
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+  white-space: nowrap;
+}
+
+.toolbar-sep {
+  color: var(--muted);
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+}
+
+input[type="text"],
+input[type="file"] {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-strong);
+  color: var(--text);
+  padding: 0.5rem 0.74rem;
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+}
+
+.message {
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+  font-size: 0.88rem;
+}
+
+.container {
+  width: min(1160px, 94vw);
+  margin: 1rem auto 1.4rem;
+}
+
+.viewer-panel {
+  background: color-mix(in srgb, var(--surface) 95%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 10px 26px var(--shadow);
+}
+
+.message.error {
+  color: var(--error);
+}
+
+.message.success {
+  color: var(--success);
+}
+
+.viewer-panel {
+  padding: clamp(1rem, 1.5vw, 1.4rem);
+  min-height: 60vh;
+}
+
+.markdown-body {
+  line-height: 1.7;
+  font-size: 1.03rem;
+}
+
+.markdown-body > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  margin: 1.1rem 0 0.5rem;
+  line-height: 1.25;
+}
+
+.markdown-body code {
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  background: var(--code-bg);
+  border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  border-radius: 6px;
+  padding: 0.08rem 0.3rem;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem;
+  overflow-x: auto;
+}
+
+.markdown-body pre code {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.markdown-body blockquote {
+  margin: 0.8rem 0;
+  padding: 0.2rem 0 0.2rem 0.9rem;
+  border-left: 4px solid var(--accent);
+  color: var(--muted);
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.markdown-body a {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .toolbar-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-field--grow {
+    min-width: unset;
+  }
+
+  .app-header {
+    align-items: center;
+  }
+}
