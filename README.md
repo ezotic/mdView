@@ -10,6 +10,16 @@ A Python web app that opens local `.md` files and renders them with clean format
 - Light/Dark theme toggle with persistence in browser local storage
 - Cross-platform run instructions (Linux, Windows, macOS)
 
+## Screenshots
+
+### Viewer UI
+
+![mdView viewer](screenshot_20260508_114341.jpg)
+
+### Rendered view
+
+![mdView alternate view](screenshot_20260508_115031.jpg)
+
 ## Quick start
 
 ### 1) Create and activate virtual environment
