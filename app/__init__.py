@@ -14,4 +14,13 @@ def create_app(test_config=None):
         app.config.update(test_config)
 
     app.register_blueprint(bp)
+
+    @app.after_request
+    def add_no_cache_headers(response):
+        # Always fetch a fresh page so previous rendered markdown is not reused.
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
+
     return app
