@@ -1,0 +1,15 @@
+services:
+  mdview:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mdview
+    environment:
+      FLASK_HOST: 0.0.0.0
+      FLASK_PORT: 5000
+      FLASK_DEBUG: 0
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    restart: unless-stopped

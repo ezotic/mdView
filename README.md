@@ -2,6 +2,19 @@
 
 A Python web app that opens local `.md` files and renders them with clean formatting.
 
+## Run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+Then open `http://127.0.0.1:5000` in your browser.
+
+Notes:
+
+- File upload works normally in Docker.
+- Path-based loading works for files available inside the container. With the default Compose setup, the project folder is mounted at `/app`, so you can load files like `/app/samples/example.md`.
+
 ## MVP features
 
 - Open local Markdown using file upload
@@ -21,6 +34,18 @@ A Python web app that opens local `.md` files and renders them with clean format
 ![mdView alternate view](screenshot_20260508_114341.jpg)
 
 ## Quick start
+
+### Docker Compose
+
+```bash
+docker compose up --build
+```
+
+Stop the app with:
+
+```bash
+docker compose down
+```
 
 ### 1) Create and activate virtual environment
 
